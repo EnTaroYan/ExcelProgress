@@ -101,6 +101,10 @@ int main()
 				sheet->setCol(5, 5, 6);
 				sheet->setCol(6, 6, 6);
 
+				Format* firstRowFormat = book->addFormat();
+				firstRowFormat->setAlignH(ALIGNH_CENTER);
+				firstRowFormat->setBorder(BORDERSTYLE_THIN);
+
 				Format* barCodeFormat = book->addFormat();
 				barCodeFormat->setAlignH(ALIGNH_LEFT);
 				barCodeFormat->setBorder(BORDERSTYLE_THIN);
@@ -129,13 +133,13 @@ int main()
 				backupFormat->setAlignH(ALIGNH_LEFT);
 				backupFormat->setBorder(BORDERSTYLE_THIN);
 
-				sheet->writeStr(0, 0, "商品条码", barCodeFormat);
-				sheet->writeStr(0, 1, "商品名称", nameFormat);
-				sheet->writeStr(0, 2, "单位", unitFormat);
-				sheet->writeStr(0, 3, "商品ID", idFormat);
-				sheet->writeStr(0, 4, "库位", posFormat);
-				sheet->writeStr(0, 5, "库存数", numFormat);
-				sheet->writeStr(0, 6, "备注", backupFormat);
+				sheet->writeStr(0, 0, "商品条码", firstRowFormat);
+				sheet->writeStr(0, 1, "商品名称", firstRowFormat);
+				sheet->writeStr(0, 2, "单位", firstRowFormat);
+				sheet->writeStr(0, 3, "商品ID", firstRowFormat);
+				sheet->writeStr(0, 4, "库位", firstRowFormat);
+				sheet->writeStr(0, 5, "库存数", firstRowFormat);
+				sheet->writeStr(0, 6, "备注", firstRowFormat);
 				sheet->setRow(0, 20);
 				for (int i = 1; i < goodsList.size()+1; ++i)
 				{
